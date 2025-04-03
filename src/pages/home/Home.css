@@ -1,0 +1,32 @@
+.escolha {
+  display: flex;
+  padding: 24px;
+  justify-content: space-evenly;
+}
+
+.botao-efet{
+  background-color: chocolate;
+  color: white;
+}
+
+.botao-efet:hover{
+  background-color: white;
+  color: chocolate;
+}
+
+.botao-reset{
+  background-color: darkolivegreen;
+  color: white;
+}
+
+.botao-reset:hover{
+  background-color: white;
+  color: darkolivegreen;
+}
+
+.cont-peq{
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}

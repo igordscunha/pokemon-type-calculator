@@ -1,0 +1,129 @@
+[
+  {
+    "type": "fire",
+    "strongAgainst": ["water", "ground", "rock"],
+    "weakAgainst": ["fire", "grass", "ice", "bug", "steel", "fairy"],
+    "immuneTo": [],
+    "color": "#EB812F"
+
+  },
+  {
+    "type": "water",
+    "strongAgainst": ["electric", "grass"],
+    "weakAgainst": ["fire", "water", "ice", "steel"],
+    "immuneTo": [],
+    "color": "#6E96E1"
+  },
+  {
+    "type": "grass",
+    "strongAgainst": ["fire", "ice", "poison", "flying", "bug"],
+    "weakAgainst": ["water", "grass", "electric", "ground"],
+    "immuneTo": [],
+    "color": "#73CA52"
+  },
+  {
+    "type": "fight",
+    "strongAgainst": ["flying", "psychic", "fairy"],
+    "weakAgainst": ["bug", "rock", "dark"],
+    "immuneTo": [],
+    "color": "#BF2E23"
+  },
+  {
+    "type": "rock",
+    "strongAgainst": ["water", "grass", "fight", "ground", "steel"],
+    "weakAgainst": ["normal", "fire", "poison", "flying"],
+    "immuneTo": [],
+    "color": "#B7A331"
+  },
+  {
+    "type": "ground",
+    "strongAgainst": ["water", "grass", "ice"],
+    "weakAgainst": ["poison", "rock"],
+    "immuneTo": ["electric"],
+    "color": "#EAC77B"
+  },
+  {
+    "type": "steel",
+    "strongAgainst": ["fire", "fight", "ground"],
+    "weakAgainst": ["normal", "grass", "ice", "flying", "bug", "rock", "dragon", "steel", "fairy"],
+    "immuneTo": ["poison"],
+    "color": "#BDB8D6"
+  },
+  {
+    "type": "ice",
+    "strongAgainst": ["fire", "fight", "rock", "steel"],
+    "weakAgainst": ["ice"],
+    "immuneTo": [],
+    "color": "#97DAD5"
+  },
+  {
+    "type": "flying",
+    "strongAgainst": ["electric", "ice", "rock"],
+    "weakAgainst": ["grass", "fight", "bug"],
+    "immuneTo": ["ground"],
+    "color": "#A48CE4"
+  },
+  {
+    "type": "fairy",
+    "strongAgainst": ["poison", "steel"],
+    "weakAgainst": ["fight", "bug", "dark"],
+    "immuneTo": ["dragon"],
+    "color": "#FACEF3"
+  },
+  {
+    "type": "psychic",
+    "strongAgainst": ["bug", "ghost", "dark"],
+    "weakAgainst": ["fight", "psychic"],
+    "immuneTo": [],
+    "color": "#DF5E86"
+  },
+  {
+    "type": "dark",
+    "strongAgainst": ["fight", "bug", "fairy"],
+    "weakAgainst": ["ghost", "dark"],
+    "immuneTo": ["psychic"],
+    "color": "#6E584D"
+  },
+  {
+    "type": "ghost",
+    "strongAgainst": ["ghost", "dark"],
+    "weakAgainst": ["poison", "bug"],
+    "immuneTo": ["normal", "fight"],
+    "color": "#6E5899"
+  },
+  {
+    "type": "bug",
+    "strongAgainst": ["fire", "flying", "rock"],
+    "weakAgainst": ["grass", "fight", "ground"],
+    "immuneTo": [],
+    "color": "#A9B728"
+  },
+  {
+    "type": "poison",
+    "strongAgainst": ["ground", "psychic"],
+    "weakAgainst": ["grass", "fight", "poison", "bug", "fairy"],
+    "immuneTo": [],
+    "color": "#924994"
+  },
+  {
+    "type": "electric",
+    "strongAgainst": ["ground"],
+    "weakAgainst": ["electric", "flying", "steel"],
+    "immuneTo": [],
+    "color": "#FAD844"
+  },
+  {
+    "type": "dragon",
+    "strongAgainst": ["ice", "dragon", "fairy"],
+    "weakAgainst": ["fire", "water", "grass", "electric"],
+    "immuneTo": [],
+    "color": "#7B4BE0"
+  },
+  {
+    "type": "normal",
+    "strongAgainst": ["fight"],
+    "weakAgainst": [],
+    "immuneTo": ["ghost"],
+    "color": "#A6AA75"
+  }
+]
