@@ -1,56 +1,64 @@
-import typeData from '../data/pokemonsTypes.json'
+import typeData from '../data/pokemonsTypes.json';
 
 export function calculadoraDeTipos(selectedTypes) {
   if (!selectedTypes || !Array.isArray(selectedTypes)) {
-    return { weakAgainst: [], strongAgainst: [], immuneTo: [] };
+    return { veryWeakAgainst: [], weakAgainst: [], strongAgainst: [], veryStrongAgainst: [], immuneTo: [] };
   }
 
-  const types = typeData.filter(t => selectedTypes.includes(t.type));
   const immuneTo = new Set();
+  const veryStrongAgainst = new Set();
   const strongAgainst = new Set();
   const weakAgainst = new Set();
+  const veryWeakAgainst = new Set();
 
-  // 1. Processa imunidades (máxima prioridade)
-  types.forEach(type => {
-    type.immuneTo.forEach(immuneType => immuneTo.add(immuneType));
-  });
+  const calcularMultiplicador = (targetType) => {
+    let multiplicador = 1;
 
-  // 2. Processa FRAQUEZAS (tipos que são fortes contra AMBOS)
-  types.forEach(type => {
-    type.weakAgainst.forEach(weakType => {
-
-      const neutralizado = types.some(t => t.strongAgainst.includes(weakType));
-
-      if(!neutralizado && !immuneTo.has(weakType)){
-        weakAgainst.add(weakType);
+    selectedTypes.forEach(selectedType => {
+      const typeInfo = typeData.find(td => td.type === selectedType);
+      if (typeInfo.strongAgainst.includes(targetType)) {
+        multiplicador *= 2; // Efetivo
+      } else if (typeInfo.weakAgainst.includes(targetType)) {
+        multiplicador *= 0.5; // Inefetivo
+      } else if (typeInfo.immuneTo.includes(targetType)) {
+        multiplicador *= 0; // Imune
       }
-    })
-  })
-
-  // 3. Processa RESISTÊNCIAS (tipos resistidos por AMBOS ou por um enquanto o outro é neutro)
-  const allPossibleResistances = new Set();
-  types.forEach(type => {
-    type.strongAgainst.forEach(resistantType => {
-
-      if (!immuneTo.has(resistantType)) {
-        allPossibleResistances.add(resistantType);
-      }
-
     });
-  });
 
-  // Só considera resistência se pelo menos um tipo resistir e o outro não for fraco
-  allPossibleResistances.forEach(resistantType => {
+    return multiplicador;
+  };
 
-    if (!types.some(type => type.weakAgainst.includes(resistantType))) {
-      strongAgainst.add(resistantType);
+  typeData.forEach(type => {
+    const multiplicador = calcularMultiplicador(type.type);
+
+    if (multiplicador === 0) {
+      immuneTo.add(type.type); // Imune
+    } else if (multiplicador >= 4) {
+      veryStrongAgainst.add(type.type); // Muito Efetivo
+    } else if (multiplicador === 2) {
+      strongAgainst.add(type.type); // Efetivo
+    } else if (multiplicador === 0.5) {
+      weakAgainst.add(type.type); // Inefetivo
+    } else if (multiplicador <= 0.25) {
+      veryWeakAgainst.add(type.type); // Muito Inefetivo
     }
-
   });
+
+  if (selectedTypes.length === 1) {
+    return {
+      veryStrongAgainst: Array.from(strongAgainst),
+      strongAgainst: [],
+      veryWeakAgainst: Array.from(weakAgainst),
+      weakAgainst: [],
+      immuneTo: Array.from(immuneTo),
+    };
+  }
 
   return {
+    veryWeakAgainst: Array.from(veryWeakAgainst),
     weakAgainst: Array.from(weakAgainst),
+    veryStrongAgainst: Array.from(veryStrongAgainst),
     strongAgainst: Array.from(strongAgainst),
-    immuneTo: Array.from(immuneTo)
+    immuneTo: Array.from(immuneTo),
   };
 }

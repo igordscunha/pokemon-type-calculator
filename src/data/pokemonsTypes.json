@@ -45,7 +45,7 @@
   {
     "type": "steel",
     "strongAgainst": ["fire", "fight", "ground"],
-    "weakAgainst": ["normal", "grass", "ice", "flying", "bug", "rock", "dragon", "steel", "fairy"],
+    "weakAgainst": ["normal", "grass", "ice", "flying", "psychic", "bug", "rock", "dragon", "steel", "fairy"],
     "immuneTo": ["poison"],
     "color": "#BDB8D6"
   },

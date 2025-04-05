@@ -20,7 +20,7 @@ export const Home = () => {
       
       setResultado(calculadoraDeTipos(tipos));
     } else {
-      setResultado({ weakAgainst: [], strongAgainst: [], immuneTo: [] });
+      setResultado({ weakAgainst: [], veryWeakAgainst: [], strongAgainst: [], veryStrongAgainst: [], immuneTo: [] });
     }
   }, [primeiraEscolha, segundaEscolha]);
 
@@ -114,27 +114,59 @@ export const Home = () => {
         {escolhido && resultado && (
           <section>
             <div>
-              <div>
-                <h3>{`Strong against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
-                {resultado.strongAgainst.map((strongType) => (
-                  <Botao
-                    key={strongType}
-                    texto={strongType.toUpperCase()}
-                    cor={typeMap[strongType].color}
-                  />
-                ))}
-              </div>
 
-              <div>
-                <h3>{`Weak against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
-                {resultado.weakAgainst.map((weakType) => (
+              {resultado.veryStrongAgainst.length > 0 && (
+                <div>
+                  <h3>{`Very strong against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
+                  {resultado.veryStrongAgainst.map((veryStrongType) => (
                     <Botao
-                      key={weakType}
-                      texto={weakType.toUpperCase()}
-                      cor={typeMap[weakType].color}
+                      key={veryStrongType}
+                      texto={veryStrongType.toUpperCase()}
+                      cor={typeMap[veryStrongType]?.color || "#ccc"}
                     />
                   ))}
               </div>
+              )}
+
+              {resultado.strongAgainst.length > 0 && (
+                <div>
+                  <h3>{`Strong against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
+                  {resultado.strongAgainst.map((strongType) => (
+                    <Botao
+                      key={strongType}
+                      texto={strongType.toUpperCase()}
+                      cor={typeMap[strongType]?.color || "#ccc"}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {resultado.weakAgainst.length > 0 && (
+                <div>
+                  <h3>{`Weak against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
+                  {resultado.weakAgainst.map((weakType) => (
+                      <Botao
+                        key={weakType}
+                        texto={weakType.toUpperCase()}
+                        cor={typeMap[weakType]?.color || "#ccc"}
+                      />
+                    ))}
+                </div>
+              )}
+
+              {resultado.veryWeakAgainst.length > 0 && (
+                <div>
+                  <h3>{`Very weak against ${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)}:`}</h3>
+                  {resultado.veryWeakAgainst.map((veryWeakType) => (
+                    <Botao
+                      key={veryWeakType}
+                      texto={veryWeakType.toUpperCase()}
+                      cor={typeMap[veryWeakType]?.color || "#ccc"}
+                    />
+                  ))}
+              </div>
+              )}
+
 
               {resultado.immuneTo.length > 0 && (
                 <div>
@@ -158,32 +190,62 @@ export const Home = () => {
         {escolhidoDois && resultado && (
           <section>
             <div>
-                            
-              <div>
-                <h3>Strong against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}:</h3>
-                {resultado.strongAgainst.map((strongType) => (
-                  <Botao
-                    key={strongType}
-                    texto={strongType.toUpperCase()}
-                    cor={typeMap[strongType]?.color || "#ccc"} // Fallback para cor não encontrada
-                  />
-                ))}
-              </div>
 
-              <div>
-                <h3>Weak against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}:</h3>
-                {resultado.weakAgainst.map((weakType) => (
+              {resultado.veryStrongAgainst.length > 0 && (
+                <div>
+                <h3>Very strong against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}</h3>
+                {resultado.veryStrongAgainst.map((veryStrongType) => (
                   <Botao
-                    key={weakType}
-                    texto={weakType.toUpperCase()}
-                    cor={typeMap[weakType]?.color || "#ccc"}
+                    key={veryStrongType}
+                    texto={veryStrongType.toUpperCase()}
+                    cor={typeMap[veryStrongType]?.color || "#ccc"}
                   />
                 ))}
-              </div>
+                </div>
+              )}
+
+              {resultado.strongAgainst.length > 0 && (
+                <div>
+                  <h3>Strong against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}</h3>
+                  {resultado.strongAgainst.map((strongType) => (
+                    <Botao
+                      key={strongType}
+                      texto={strongType.toUpperCase()}
+                      cor={typeMap[strongType]?.color || "#ccc"}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {resultado.weakAgainst.length > 0 && (
+                <div>
+                  <h3>Weak against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}</h3>
+                  {resultado.weakAgainst.map((weakType) => (
+                    <Botao
+                      key={weakType}
+                      texto={weakType.toUpperCase()}
+                      cor={typeMap[weakType]?.color || "#ccc"}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {resultado.veryWeakAgainst.length > 0 && (
+                <div>
+                  <h3>Very weak against {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}</h3>
+                  {resultado.veryWeakAgainst.map((veryWeakType) => (
+                    <Botao
+                      key={veryWeakType}
+                      texto={veryWeakType.toUpperCase()}
+                      cor={typeMap[veryWeakType]?.color || "#ccc"}
+                    />
+                  ))}
+                </div>
+              )}
 
               {resultado.immuneTo.length > 0 && (
                 <div>
-                  <h3>Immune to {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}:</h3>
+                  <h3>Immune to {`${primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} and ${segundaEscolha.type.charAt(0).toUpperCase() + segundaEscolha.type.slice(1)}:`}</h3>
                   {resultado.immuneTo.map((immuneType) => (
                     <Botao
                       key={immuneType}
