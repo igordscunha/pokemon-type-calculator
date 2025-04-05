@@ -82,7 +82,7 @@ export const Home = () => {
       <div>
         {primeiraEscolha && (
           <>
-            <p>Você escolheu:</p>
+            <p>You've chosen:</p>
             <div className='escolha'>
               <Botao 
                 texto={primeiraEscolha.type.charAt(0).toUpperCase() + primeiraEscolha.type.slice(1)} 
