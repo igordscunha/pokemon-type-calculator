@@ -1,0 +1,13 @@
+footer{
+  height: 5rem;
+  background-color: #DBDBDB;
+  margin-top: 5rem;
+}
+
+.footer-container{
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: 300;
+}
