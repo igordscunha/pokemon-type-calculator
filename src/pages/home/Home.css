@@ -1,3 +1,22 @@
+.main-container{
+  min-height: 100vh;
+  padding: 5rem;
+}
+
+.inner-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 8rem;
+}
+
+.tipos{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .escolha {
   display: flex;
   padding: 24px;

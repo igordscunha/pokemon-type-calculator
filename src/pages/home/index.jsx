@@ -2,7 +2,7 @@ import types from '../../data/pokemonsTypes.json'
 import { Botao } from '../../components/button'
 import { useState, useEffect } from 'react'
 import { calculadoraDeTipos } from '../../utils/calculadora'
-import './Home.css'
+import './home.css'
 
 export const Home = () => {
 
@@ -62,19 +62,23 @@ export const Home = () => {
   }
 
   return(
-    <section>
-      <h1>Pokémon Type Calculator</h1>
-      <div>
+    <main className='main-container'>
 
-        {types.map((types, index) => (
-          <Botao 
-            key={index}
-            texto={types.type.charAt(0).toUpperCase() + types.type.slice(1)} 
-            cor={types.color}
-            onClick={() => handleBotaoClick(types)}
-          />
-        ))}
+      <div className='inner-container'>
+        <h1>Pokémon Type Calculator</h1>
+        <h2>Select up to two types:</h2>
+        <div className='tipos'>
 
+          {types.map((types, index) => (
+            <Botao 
+              key={index}
+              texto={types.type.charAt(0).toUpperCase() + types.type.slice(1)} 
+              cor={types.color}
+              onClick={() => handleBotaoClick(types)}
+            />
+          ))}
+
+        </div>
       </div>
 
 
@@ -102,8 +106,8 @@ export const Home = () => {
 
         {primeiraEscolha && (
           <div className='cont-peq'>
-            <button onClick={calcularEfetividade} className='botao-efet'>Calcular Efetividade</button>
-            <button onClick={Resetar} className='botao-reset'>Resetar</button>
+            <button onClick={calcularEfetividade} className='botao-efet'>Calculate effectiveness</button>
+            <button onClick={Resetar} className='botao-reset'>Reset</button>
           </div>
         )}
 
@@ -259,6 +263,6 @@ export const Home = () => {
           </section>
         )}
       </div>
-    </section>
+    </main>
   )
 }
